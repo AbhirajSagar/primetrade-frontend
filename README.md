@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PrimeTrade Frontend
 
-## Getting Started
+A task management application built with Next.js and React. 
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **User Authentication**
+  - User login and registration
+  - Secure session management
+  - Protected routes and pages
+
+- **Task Management**
+  - Create new tasks
+  - View all tasks with detailed information
+  - Edit existing tasks
+  - Delete tasks
+  - Task cards with visual representation
+
+- **User Interface**
+  - Styling with Tailwind CSS
+  - Icons from Lucide React
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+
+## 📋 Prerequisites
+
+- Node.js (v18 or higher recommended)
+- npm or yarn package manager
+
+## 🔧 Installation & Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd primetrade-frontend
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Configure environment variables** (if needed)
+   - Create a `.env.local` file in the root directory
+   - Add your API endpoints and configuration
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:3000`
+
+## 📦 Available Scripts
+
+- `npm run dev` - Start the development server with hot-reload
+- `npm run build` - Build the application for production
+- `npm start` - Start the production server
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                           # Next.js App Router
+│   ├── layout.js                 # Root layout
+│   ├── page.js                   # Home page
+│   ├── globals.css               # Global styles
+│   ├── auth/                     # Authentication routes
+│   │   ├── layout.js             # Auth layout
+│   │   ├── login/page.js         # Login page
+│   │   └── register/page.js      # Registration page
+│   └── task/                     # Task management routes
+│       ├── create/page.js        # Create task page
+│       └── edit/[id]/page.js     # Edit task page
+├── components/                    # Reusable UI components
+│   ├── Error.js                  # Error display component
+│   ├── Loading.js                # Loading state component
+│   ├── Modal.js                  # Modal dialog component
+│   └── TaskCard.js               # Task card component
+├── constants/                     # Application constants
+│   └── Endpoints.js              # API endpoint definitions
+└── services/                      # API services
+    ├── AuthServices.js           # Authentication API calls
+    └── TaskServices.js           # Task management API calls
+
+public/                           # Static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔗 API Integration
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+The application communicates with a backend API through service files located in `src/services/`:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **AuthServices.js** - Handles user login, registration, and authentication
+- **TaskServices.js** - Manages task CRUD operations
+- **Endpoints.js** - Centralized API endpoint configuration
