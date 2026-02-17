@@ -1,4 +1,5 @@
 import { Endpoints } from "@/constants/Endpoints";
+import { redirect } from "next/navigation";
 
 export async function GetAllTasksService()
 {
@@ -12,6 +13,11 @@ export async function GetAllTasksService()
         }
 
         const res = await fetch(Endpoints.ListTasks(), requestOptions);
+        if(res.status === 401)
+        {
+            redirect('/auth/login');
+        }
+
         if(!res.ok)
         {
             const errorText = await res.text();
@@ -40,6 +46,11 @@ export async function GetTaskByIdService(id)
         }
 
         const res = await fetch(Endpoints.GetTask(id), requestOptions);
+        if(res.status === 401)
+        {
+            redirect('/auth/login');
+        }
+
         if(!res.ok)
         {
             const errorText = await res.text();
@@ -69,6 +80,12 @@ export async function UpdateTaskService(id, taskData)
         }
 
         const res = await fetch(Endpoints.UpdateTask(id), requestOptions);
+        if(res.status === 401)
+        {
+            redirect('/auth/login');
+        }
+
+
         if(!res.ok)
         {
             const errorText = await res.text();
@@ -97,6 +114,11 @@ export async function DeleteTaskService(id)
         }
 
         const res = await fetch(Endpoints.DeleteTask(id), requestOptions);
+        if(res.status === 401)
+        {
+            redirect('/auth/login');
+        }
+
         if(!res.ok)
         {
             const errorText = await res.text();
@@ -126,11 +148,18 @@ export async function CreateTaskService(taskData)
         }
 
         const res = await fetch(Endpoints.CreateTask(), requestOptions);
+        if(res.status === 401)
+        {
+            redirect('/auth/login');
+        }
+
+
         if(!res.ok)
         {
             const errorText = await res.text();
             throw new Error(`HTTP ${res.status}: ${errorText || res.statusText}`);
         }
+
 
         const data = await res.json();
         return [data, undefined];

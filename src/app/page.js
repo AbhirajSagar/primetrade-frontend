@@ -46,7 +46,6 @@ export default function Home()
             setTimeout(() => { setIsModalOpen(false); }, 1000);
             return;
         }
-
         console.log(data);
         setIsDeletingStatus(data.message);
         setTimeout(() => 
