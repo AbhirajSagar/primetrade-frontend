@@ -52,12 +52,14 @@ export default function TaskPage()
 
         const [data, err] = await UpdateTaskService(id, { title, description, status })
         
-        if(err.message === 'Unauthorized') 
-            router.push('/auth/login');
-        else
+        if(err) 
         {
-            setMessage({ type: "error", content: "Failed to update task." })
-            return
+            if(err.message === 'Unauthorized')
+                router.push('/auth/login');
+            else
+                setMessage({ type: "error", content: "Failed to update task." })
+
+            return;
         }
 
         setMessage({ type: "success", content: "Task updated successfully!" })
