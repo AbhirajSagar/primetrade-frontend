@@ -27,6 +27,7 @@ export default function Home()
         } 
         catch(e) 
         {
+            if(e.message === 'Unauthorized') router.push('/auth/login');
             setError(e);
         }
     }

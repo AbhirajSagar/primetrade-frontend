@@ -24,13 +24,16 @@ export default function CreateTaskPage()
 
         const [data, err] = await CreateTaskService({ title, description })
 
-        if(err)
+        if(err.message === 'Unauthorized')
+        {
+            router.push('/auth/login');
+        }
+        else
         {
             setMessage({ type: "error", content: "Failed to create task." })
             return
         }
 
-        console.log(data)
         setMessage({ type: "success", content: "Task created successfully!" })
         setTimeout(() => router.push('/'), 1000)
     }

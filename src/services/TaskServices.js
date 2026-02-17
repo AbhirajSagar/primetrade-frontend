@@ -15,7 +15,7 @@ export async function GetAllTasksService()
         const res = await fetch(Endpoints.ListTasks(), requestOptions);
         if(res.status === 401)
         {
-            redirect('/auth/login');
+            throw new Error('Unauthorized')
         }
 
         if(!res.ok)
@@ -48,7 +48,7 @@ export async function GetTaskByIdService(id)
         const res = await fetch(Endpoints.GetTask(id), requestOptions);
         if(res.status === 401)
         {
-            redirect('/auth/login');
+            throw new Error('Unauthorized')
         }
 
         if(!res.ok)
@@ -82,7 +82,7 @@ export async function UpdateTaskService(id, taskData)
         const res = await fetch(Endpoints.UpdateTask(id), requestOptions);
         if(res.status === 401)
         {
-            redirect('/auth/login');
+            throw new Error('Unauthorized')
         }
 
 
@@ -116,7 +116,7 @@ export async function DeleteTaskService(id)
         const res = await fetch(Endpoints.DeleteTask(id), requestOptions);
         if(res.status === 401)
         {
-            redirect('/auth/login');
+            throw new Error('Unauthorized')
         }
 
         if(!res.ok)
@@ -150,7 +150,7 @@ export async function CreateTaskService(taskData)
         const res = await fetch(Endpoints.CreateTask(), requestOptions);
         if(res.status === 401)
         {
-            redirect('/auth/login');
+            throw new Error('Unauthorized')
         }
 
 
