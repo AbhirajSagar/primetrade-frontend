@@ -33,7 +33,7 @@ export default function LoginPage()
 
         setMessage({type: 'success', content: 'Login Successful!'})
         setIsLoading(false);
-        // setTimeout(() => router.push('/'), 1000)
+        setTimeout(() => router.push('/'), 1000)
     }
 
     function showError(error)
